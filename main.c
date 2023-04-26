@@ -5,6 +5,31 @@
 #include "SDL2/SDL_image.h"
 #include "isometric.h"
 
+#define ASSERT(_e, ...)              \
+    if (!(_e))                       \
+    {                                \
+        fprint(stderr, __VA_ARGS__); \
+        exit(1);                     \
+    }
+
+typedef float f32;
+typedef double f64;
+typedef uint8_t u8;
+typedef uint16_t u16;
+typedef uint32_t u32;
+typedef uint64_t u64;
+typedef int8_t i8;
+typedef int16_t i16;
+typedef int32_t i32;
+typedef int64_t i64;
+typedef size_t usize;
+typedef ssize_t isize;
+
+#define PI 3.14159265359f
+#define TAU (2.0f * PI)
+#define PI_2 (PI / 2.0f)
+#define PI_4 (PI / 4.0f)
+
 #define kGameName "SDL2 Game"
 #define kGameWidth 1600
 #define kGameHeight 900
@@ -13,7 +38,8 @@
 #define SCENE_WIDTH 10
 #define SCENE_HEIGHT 10
 
-SDL_Texture *LoadTexture(SDL_Renderer *renderer, char *path)
+SDL_Texture *
+LoadTexture(SDL_Renderer *renderer, char *path)
 {
     SDL_Texture *texture = NULL;
     SDL_Surface *loadedSurface = IMG_Load(path);
